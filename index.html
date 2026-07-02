@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Command Center</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">Personal Finance Dashboard</p>
+      <h1>Financial Command Center</h1>
+      <p class="subtitle">Budget, debt payoff, retirement, and net worth in one simple tracker.</p>
+    </div>
+    <button id="resetDemo" class="secondary">Reset Demo Data</button>
+  </header>
+
+  <main>
+    <section class="card hero-card">
+      <div>
+        <p class="eyebrow">This Month</p>
+        <h2 id="monthName">Monthly Snapshot</h2>
+      </div>
+      <div class="hero-grid">
+        <div><span>Income</span><strong id="totalIncome">$0</strong></div>
+        <div><span>Expenses</span><strong id="totalExpenses">$0</strong></div>
+        <div><span>Left Over</span><strong id="leftOver">$0</strong></div>
+        <div><span>Debt Remaining</span><strong id="totalDebt">$0</strong></div>
+      </div>
+    </section>
+
+    <section class="grid two-col">
+      <section class="card">
+        <div class="section-header">
+          <h2>Income</h2>
+          <button data-add="income">+ Add</button>
+        </div>
+        <div id="incomeList" class="item-list"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Monthly Expenses</h2>
+          <button data-add="expense">+ Add</button>
+        </div>
+        <div id="expenseList" class="item-list"></div>
+      </section>
+    </section>
+
+    <section class="grid two-col">
+      <section class="card">
+        <div class="section-header">
+          <h2>Debt Payoff</h2>
+          <button data-add="debt">+ Add</button>
+        </div>
+        <div id="debtList" class="item-list"></div>
+      </section>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Retirement</h2>
+        </div>
+        <div class="tracker-row">
+          <label>Current 401(k) / Retirement Balance</label>
+          <input id="retirementBalance" type="number" min="0" step="100" />
+        </div>
+        <div class="tracker-row">
+          <label>Target Portfolio</label>
+          <input id="retirementTarget" type="number" min="0" step="1000" />
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Progress</span><strong id="retirementProgressText">0%</strong></div>
+          <div class="progress-bar"><div id="retirementProgress"></div></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="card">
+      <div class="section-header">
+        <h2>Net Worth</h2>
+        <button data-add="asset">+ Add Asset</button>
+      </div>
+      <div class="networth-grid">
+        <div>
+          <h3>Assets</h3>
+          <div id="assetList" class="item-list"></div>
+        </div>
+        <div class="networth-total">
+          <span>Estimated Net Worth</span>
+          <strong id="netWorth">$0</strong>
+          <p>Assets minus debts. Update monthly to track real progress.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h2 id="modalTitle">Add Item</h2>
+      <label>Name</label>
+      <input id="itemName" placeholder="Example: Mortgage" />
+      <label>Amount</label>
+      <input id="itemAmount" type="number" placeholder="0" />
+      <div class="modal-actions">
+        <button id="saveItem">Save</button>
+        <button id="cancelItem" class="secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
