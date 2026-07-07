@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financial Command Center</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow" id="greeting">Good Evening Brandon</p>
+        <h1>Financial Command Center</h1>
+        <p class="subtitle">Your family’s financial operating system.</p>
+      </div>
+      <button id="resetBtn" class="ghost-btn">Reset</button>
+    </section>
+
+    <nav class="tab-nav" aria-label="Primary">
+      <button class="tab active" data-tab="dashboard">🏠<span>Dashboard</span></button>
+      <button class="tab" data-tab="budget">💵<span>Budget</span></button>
+      <button class="tab" data-tab="debt">💳<span>Debt</span></button>
+      <button class="tab" data-tab="investments">📈<span>Invest</span></button>
+      <button class="tab" data-tab="settings">⚙️<span>Settings</span></button>
+    </nav>
+
+    <section id="dashboard" class="screen active-screen">
+      <article class="score-card glass">
+        <div>
+          <p class="label">Financial Health</p>
+          <h2><span id="healthScore">0</span><small>/100</small></h2>
+          <p id="healthMessage" class="muted">Calculating...</p>
+        </div>
+        <div class="score-ring"><span id="scoreRingText">0%</span></div>
+      </article>
+
+      <article class="mission-card card">
+        <p class="label">Mission Brief</p>
+        <h3 id="missionTitle">July 2026</h3>
+        <ul id="missionList"></ul>
+      </article>
+
+      <div class="grid two">
+        <article class="metric card"><p>Income</p><strong id="monthlyIncome">$0</strong></article>
+        <article class="metric card"><p>Expenses</p><strong id="monthlyExpenses">$0</strong></article>
+        <article class="metric card"><p>Available</p><strong id="monthlyAvailable">$0</strong></article>
+        <article class="metric card"><p>Debt Remaining</p><strong id="debtRemaining">$0</strong></article>
+      </div>
+
+      <article class="card">
+        <div class="section-head">
+          <div>
+            <p class="label">Retirement Progress</p>
+            <h3>Household Retirement</h3>
+          </div>
+          <strong id="retirementTotal">$0</strong>
+        </div>
+        <div class="progress"><span id="retirementBar"></span></div>
+        <p class="muted"><span id="retirementPercent">0%</span> of $1.15M goal</p>
+      </article>
+
+      <article class="card">
+        <p class="label">Next Objectives</p>
+        <div id="goalsList" class="goals"></div>
+      </article>
+    </section>
+
+    <section id="budget" class="screen">
+      <div class="section-head"><h2>Budget</h2><button class="primary-btn" data-add="budget">+ Add</button></div>
+      <div id="incomeList" class="list"></div>
+      <h3>Monthly Expenses</h3>
+      <div id="expenseList" class="list"></div>
+    </section>
+
+    <section id="debt" class="screen">
+      <div class="section-head"><h2>Debt</h2><button class="primary-btn" data-add="debt">+ Add</button></div>
+      <div id="debtList" class="list"></div>
+    </section>
+
+    <section id="investments" class="screen">
+      <div class="section-head"><h2>Investments</h2><button class="primary-btn" data-add="investment">+ Add</button></div>
+      <div id="investmentList" class="list"></div>
+    </section>
+
+    <section id="settings" class="screen">
+      <h2>Household Profile</h2>
+      <div class="card form-card">
+        <label>Retirement Goal <input id="retirementGoalInput" type="number" /></label>
+        <label>Emergency Fund Goal <input id="emergencyGoalInput" type="number" /></label>
+        <label>Cash / Emergency Fund <input id="cashInput" type="number" /></label>
+        <button id="saveSettings" class="primary-btn full">Save Settings</button>
+      </div>
+      <p class="muted small">Version 0.2 • Data saves only to this browser.</p>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <h3 id="modalTitle">Add Item</h3>
+      <label>Name <input id="itemName" /></label>
+      <label>Amount / Balance <input id="itemAmount" type="number" /></label>
+      <label id="itemRateWrap">Interest / Contribution % <input id="itemRate" type="number" step="0.01" /></label>
+      <div class="modal-actions">
+        <button id="cancelModal" class="ghost-btn">Cancel</button>
+        <button id="saveItem" class="primary-btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
